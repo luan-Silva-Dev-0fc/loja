@@ -1,0 +1,941 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#E9D8BE" />
+    <meta
+      name="description"
+      content="MARÉ TWIN — Moda leve e atemporal em tons de areia, creme e ouro."
+    />
+    <title>MARÉ TWIN</title>
+    <link rel="icon" type="image/jpeg" href="assets/mare_twin_logo.jpg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- Announcement Bar -->
+    <div class="announcement">
+      <span>MARÉ TWIN</span>
+      <span class="announcement-pill">FRETE GRÁTIS ACIMA DE R$ 450</span>
+      <span>USE <strong>MARETWIN10</strong> PARA 10% OFF</span>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+      <div class="header-inner">
+        <a
+          class="brand"
+          href="#home"
+          data-nav="home"
+          aria-label="MARÉ TWIN início"
+        >
+          <div class="brand-logo-wrap">
+            <img src="assets/mare_twin_logo.jpg" alt="Logo MARÉ TWIN" />
+          </div>
+          <div class="brand-text">
+            <span class="brand-name">MARÉ TWIN</span>
+          </div>
+        </a>
+
+        <nav class="nav" aria-label="Navegação principal">
+          <button data-nav="home" class="active">Home</button>
+          <button data-nav="collections">Coleções</button>
+          <button data-nav="sessions">Sessões</button>
+          <button data-nav="cart">
+            Carrinho <span class="badge-count" id="countDesktop">0</span>
+          </button>
+          <button data-nav="support">Suporte</button>
+        </nav>
+
+        <div class="header-actions">
+          <button
+            class="icon-btn"
+            id="quickSearchBtn"
+            aria-label="Buscar produtos"
+            title="Buscar na coleção"
+          >
+            <svg
+              width="17"
+              height="17"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <circle cx="11" cy="11" r="8" />
+              <path d="m21 21-4.3-4.3" />
+            </svg>
+          </button>
+          <button
+            class="icon-btn"
+            id="openFavsBtn"
+            aria-label="Favoritos"
+            title="Meus Favoritos"
+          >
+            <svg
+              width="17"
+              height="17"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path
+                d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"
+              />
+            </svg>
+            <span class="mini-badge" id="favCountBadge">0</span>
+          </button>
+          <button
+            class="icon-btn"
+            data-nav="cart"
+            aria-label="Abrir carrinho"
+            title="Abrir carrinho"
+          >
+            <svg
+              width="17"
+              height="17"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z" />
+              <path d="M3 6h18" />
+              <path d="M16 10a4 4 0 0 1-8 0" />
+            </svg>
+            <span class="mini-badge" id="countMobile">0</span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Sticky Mobile Nav -->
+    <nav class="mobile-nav" aria-label="Navegação mobile">
+      <button data-nav="home" class="active">Home</button>
+      <button data-nav="collections">Coleções</button>
+      <button data-nav="sessions">Sessões</button>
+      <button data-nav="cart">Carrinho (<span id="countNav">0</span>)</button>
+      <button data-nav="support">Suporte</button>
+    </nav>
+
+    <main>
+      <!-- ==================== VIEW 1: HOME ==================== -->
+      <section id="view-home" class="view active">
+        <div class="hero-wrap">
+          <div class="hero">
+            <div class="hero-copy">
+              <div class="hero-brand-pill">
+                <img src="assets/mare_twin_logo.jpg" alt="Símbolo Maré Twin" />
+                <span>Cápsula Costa Dourada · 2026</span>
+              </div>
+              <h1>A leveza da <em>maré.</em><br />A força do <em>sol.</em></h1>
+              <p>
+                Alfaiataria fluida em linho puro, beachwear escultórico e
+                acessórios artesanais criados para acompanhar o ritmo sereno do
+                litoral ao pôr do sol.
+              </p>
+              <div class="hero-actions">
+                <button class="btn" data-nav="collections">
+                  Explorar Coleções ↗
+                </button>
+                <button class="btn secondary" data-nav="sessions">
+                  Navegar por Sessões
+                </button>
+              </div>
+              <div class="hero-stats">
+                <div class="hero-stat">
+                  <strong>100% Linho</strong>
+                  <span>Fibras naturais certificadas</span>
+                </div>
+                <div class="hero-stat">
+                  <strong>6x s/ juros</strong>
+                  <span>Ou 5% OFF no Pix</span>
+                </div>
+                <div class="hero-stat">
+                  <strong>30 dias</strong>
+                  <span>Primeira troca gratuita</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="hero-art">
+              <img
+                class="hero-photo"
+                src="assets/hero-editorial.jpg"
+                alt="Editorial MARÉ TWIN em linho natural à beira-mar"
+              />
+              <div class="hero-floating-card">
+                <div class="hero-floating-left">
+                  <img src="assets/mare_twin_logo.jpg" alt="Logo Maré Twin" />
+                  <div>
+                    <small>Edição Assinatura</small>
+                    <strong>MARÉ TWIN · 001</strong>
+                  </div>
+                </div>
+                <button class="btn sm" data-nav="collections">Ver Peças</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Brand Pillars -->
+        <div class="pillars">
+          <div class="pillar">
+            <div class="pillar-icon">✦</div>
+            <div>
+              <h3>Linho &amp; Fibras Nobres</h3>
+              <p>Tecidos respiráveis com caimento fluido para dias solares.</p>
+            </div>
+          </div>
+          <div class="pillar">
+            <div class="pillar-icon">◈</div>
+            <div>
+              <h3>Design Dualidade Twin</h3>
+              <p>
+                Peças versáteis que transitam da areia ao jantar à beira-mar.
+              </p>
+            </div>
+          </div>
+          <div class="pillar">
+            <div class="pillar-icon">✈</div>
+            <div>
+              <h3>Envio Nacional</h3>
+              <p>Frete grátis automático acima de R$ 450,00 com rastreio.</p>
+            </div>
+          </div>
+          <div class="pillar">
+            <div class="pillar-icon">↺</div>
+            <div>
+              <h3>Troca Sem Complicação</h3>
+              <p>Até 30 dias corridos com atendimento dedicado no suporte.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Featured Products -->
+        <section class="section">
+          <div class="section-top">
+            <div>
+              <div class="eyebrow">Curadoria da Temporada</div>
+              <h2>Destaques da Maré</h2>
+              <div class="section-sub">
+                Peças icônicas em tons de areia, creme e ouro envelhecido
+                prontas para o seu guarda-roupa costeiro.
+              </div>
+            </div>
+            <button class="text-link" data-nav="collections">
+              Ver coleção completa ↗
+            </button>
+          </div>
+          <div class="product-grid" id="featuredGrid"></div>
+        </section>
+
+        <!-- Home Quick Sessions Showcase -->
+        <section class="section-sand">
+          <div class="section">
+            <div class="section-top">
+              <div>
+                <div class="eyebrow">Explore por Departamento</div>
+                <h2>Sessões da Loja</h2>
+                <div class="section-sub">
+                  Escolha o universo que combina com o seu momento e descubra
+                  combinações exclusivas.
+                </div>
+              </div>
+              <button class="text-link" data-nav="sessions">
+                Abrir todas as sessões ↗
+              </button>
+            </div>
+            <div class="sessions-grid" id="homeSessionsGrid"></div>
+          </div>
+        </section>
+
+        <!-- Manifesto & Newsletter -->
+        <section class="section">
+          <div class="manifesto-box">
+            <div>
+              <div class="eyebrow" style="color: var(--sand)">
+                Clube Maré Twin
+              </div>
+              <h2>Receba 10% OFF na sua primeira maré.</h2>
+              <p>
+                Cadastre-se para acesso antecipado às cápsulas limitadas,
+                convites de trunk shows e o cupom exclusivo de boas-vindas.
+              </p>
+            </div>
+            <div class="newsletter-card">
+              <form id="newsletterForm">
+                <input
+                  id="newsletterEmail"
+                  type="email"
+                  required
+                  placeholder="Digite seu melhor e-mail"
+                  aria-label="Seu e-mail"
+                />
+                <button class="btn" style="width: 100%" type="submit">
+                  Desbloquear 10% OFF
+                </button>
+              </form>
+              <div
+                id="newsletterNotice"
+                class="notice"
+                style="margin-bottom: 0"
+              ></div>
+            </div>
+          </div>
+        </section>
+      </section>
+
+      <!-- ==================== VIEW 2: COLEÇÕES ==================== -->
+      <section id="view-collections" class="view">
+        <div class="section">
+          <div class="page-heading">
+            <div>
+              <div class="eyebrow">MARÉ TWIN / Catálogo Completo</div>
+              <h1>Coleções</h1>
+              <p>
+                Explore nossas cápsulas autorais, filtre por categoria, tamanho
+                ou favoritos e encontre sua próxima peça assinatura.
+              </p>
+            </div>
+            <button class="btn soft sm" id="clearFiltersBtn">
+              Limpar filtros
+            </button>
+          </div>
+
+          <!-- Collection Filter Pills -->
+          <div class="collection-pills" id="collectionPills"></div>
+
+          <!-- Search & Filters Toolbar -->
+          <div class="toolbar">
+            <input
+              class="field"
+              id="searchInput"
+              type="search"
+              placeholder="Buscar por peça, tecido ou coleção (ex: linho, kaftan, vestido)..."
+              aria-label="Buscar produto"
+            />
+            <select id="categoryFilter" aria-label="Filtrar por categoria">
+              <option value="Todos">Todas as categorias</option>
+              <option value="Vestidos">Vestidos</option>
+              <option value="Conjuntos Twin">Conjuntos Twin</option>
+              <option value="Kaftans & Praia">Kaftans &amp; Praia</option>
+              <option value="Camisas & Linho">Camisas &amp; Linho</option>
+              <option value="Acessórios">Acessórios</option>
+            </select>
+            <select id="sizeFilter" aria-label="Filtrar por tamanho">
+              <option value="Todos">Todos os tamanhos</option>
+              <option value="PP">PP</option>
+              <option value="P">P</option>
+              <option value="M">M</option>
+              <option value="G">G</option>
+              <option value="GG">GG</option>
+              <option value="Único">Único</option>
+            </select>
+            <select id="sortFilter" aria-label="Ordenar produtos">
+              <option value="featured">Em destaque</option>
+              <option value="new">Mais recentes</option>
+              <option value="low">Menor preço</option>
+              <option value="high">Maior preço</option>
+              <option value="popular">Mais vendidos</option>
+            </select>
+            <button class="btn soft sm" id="onlyFavsToggle" type="button">
+              ♡ Favoritos
+            </button>
+          </div>
+
+          <div class="filter-meta">
+            <span id="resultsCounter">Carregando peças...</span>
+            <span id="activeFilterLabel"></span>
+          </div>
+
+          <div class="product-grid" id="collectionGrid"></div>
+
+          <div class="empty-state" id="noResults" style="display: none">
+            <h3>Nenhuma peça encontrada</h3>
+            <p>
+              Tente limpar os filtros ou buscar por outro termo como "linho",
+              "kaftan" ou "conjunto".
+            </p>
+            <button class="btn" id="resetEmptyFiltersBtn">
+              Ver toda a coleção
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== VIEW 3: SESSÕES ==================== -->
+      <section id="view-sessions" class="view">
+        <div class="section">
+          <div class="page-heading">
+            <div>
+              <div class="eyebrow">
+                MARÉ TWIN / Departamentos &amp; Experiência
+              </div>
+              <h1>Sessões</h1>
+              <p>
+                Navegue pelos departamentos da marca, descubra seu caimento
+                ideal com a calculadora de medidas ou adicione um Look Twin
+                completo com desconto.
+              </p>
+            </div>
+            <button class="btn secondary sm" data-nav="collections">
+              Ir para busca avançada
+            </button>
+          </div>
+
+          <!-- Department Selector Cards -->
+          <div class="sessions-grid" id="sessionsSelectorGrid"></div>
+
+          <!-- Active Session Banner -->
+          <div class="session-banner" id="activeSessionBanner"></div>
+
+          <!-- Active Session Product Grid -->
+          <div class="product-grid" id="sessionProductsGrid"></div>
+
+          <!-- Interactive Session Tools: Size Calculator + Complete Look Builder -->
+          <div class="tools-split">
+            <!-- Tool 1: Provador Virtual / Calculadora de Tamanho -->
+            <div class="panel-card">
+              <div class="eyebrow">Provador Virtual</div>
+              <h3>Descubra seu Tamanho Maré</h3>
+              <p class="lead">
+                Informe suas medidas aproximadas para recomendarmos o caimento
+                fluido ideal nas modelagens em linho da MARÉ TWIN.
+              </p>
+              <form id="sizeFinderForm">
+                <div class="form-grid">
+                  <div class="form-group">
+                    <label for="sfBust">Busto / Tórax (cm)</label>
+                    <input
+                      id="sfBust"
+                      type="number"
+                      min="70"
+                      max="130"
+                      value="90"
+                      required
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="sfWaist">Cintura (cm)</label>
+                    <input
+                      id="sfWaist"
+                      type="number"
+                      min="55"
+                      max="115"
+                      value="72"
+                      required
+                    />
+                  </div>
+                </div>
+                <div class="form-grid">
+                  <div class="form-group">
+                    <label for="sfHip">Quadril (cm)</label>
+                    <input
+                      id="sfHip"
+                      type="number"
+                      min="80"
+                      max="140"
+                      value="98"
+                      required
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="sfFit">Preferência de Caimento</label>
+                    <select id="sfFit">
+                      <option value="justo">Mais alinhado ao corpo</option>
+                      <option value="fluido" selected>
+                        Fluido (Padrão Maré)
+                      </option>
+                      <option value="amplo">Oversized / Bem solto</option>
+                    </select>
+                  </div>
+                </div>
+                <button class="btn" type="submit" style="width: 100%">
+                  Calcular meu tamanho
+                </button>
+              </form>
+              <div class="size-result-box" id="sizeResultBox"></div>
+            </div>
+
+            <!-- Tool 2: Monte seu Look Twin (Bundle) -->
+            <div class="panel-card">
+              <div class="eyebrow">Curadoria Completa · 10% OFF no Combo</div>
+              <h3>Look Assinatura Costa Dourada</h3>
+              <p class="lead">
+                Combine 3 peças essenciais que conversam entre si e adicione
+                todas ao carrinho em um único clique.
+              </p>
+              <div class="look-items" id="lookBuilderList"></div>
+              <div
+                style="
+                  display: flex;
+                  justify-content: space-between;
+                  align-items: center;
+                  gap: 12px;
+                  flex-wrap: wrap;
+                  margin-bottom: 14px;
+                "
+              >
+                <div>
+                  <span
+                    style="font-size: 12px; color: var(--muted); display: block"
+                    >Tamanho para peças vestíveis:</span
+                  >
+                  <div
+                    class="size-row"
+                    id="lookSizeRow"
+                    style="margin: 6px 0 0"
+                  >
+                    <button type="button" class="size-btn" data-look-size="PP">
+                      PP
+                    </button>
+                    <button type="button" class="size-btn" data-look-size="P">
+                      P
+                    </button>
+                    <button
+                      type="button"
+                      class="size-btn selected"
+                      data-look-size="M"
+                    >
+                      M
+                    </button>
+                    <button type="button" class="size-btn" data-look-size="G">
+                      G
+                    </button>
+                    <button type="button" class="size-btn" data-look-size="GG">
+                      GG
+                    </button>
+                  </div>
+                </div>
+                <div style="text-align: right">
+                  <span class="price-old" id="lookOldPrice"></span>
+                  <strong
+                    style="font-size: 20px; color: var(--gold-deep)"
+                    id="lookFinalPrice"
+                  ></strong>
+                </div>
+              </div>
+              <button class="btn" id="addLookBundleBtn" style="width: 100%">
+                Adicionar Look Completo ao Carrinho
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== VIEW 4: CARRINHO ==================== -->
+      <section id="view-cart" class="view">
+        <div class="section">
+          <div class="page-heading">
+            <div>
+              <div class="eyebrow">Sua Seleção MARÉ TWIN</div>
+              <h1>Carrinho</h1>
+              <p>
+                Revise suas peças, simule o frete pelo CEP, aplique cupons
+                promocionais e conclua seu pedido.
+              </p>
+            </div>
+            <button class="btn soft sm" id="clearCartBtn" style="display: none">
+              Esvaziar carrinho
+            </button>
+          </div>
+
+          <div id="cartContent"></div>
+        </div>
+      </section>
+
+      <!-- ==================== VIEW 5: SUPORTE ==================== -->
+      <section id="view-support" class="view">
+        <div class="section">
+          <div class="page-heading">
+            <div>
+              <div class="eyebrow">Atendimento Dedicado</div>
+              <h1>Suporte</h1>
+              <p>
+                Acompanhe seu pedido em tempo real, tire dúvidas sobre tecidos e
+                medidas ou abra um chamado direto com a nossa equipe.
+              </p>
+            </div>
+          </div>
+
+          <!-- Order Tracker -->
+          <div class="tracker-card">
+            <div class="eyebrow">Rastreamento em Tempo Real</div>
+            <h2 style="margin: 6px 0 8px; font-size: 32px">
+              Acompanhe seu Pedido
+            </h2>
+            <p
+              style="margin: 0 0 16px; font-size: 13px; color: var(--ink-soft)"
+            >
+              Digite o código do pedido gerado no checkout ou clique em um dos
+              seus pedidos recentes abaixo.
+            </p>
+            <form
+              id="trackOrderForm"
+              class="inline-form"
+              style="max-width: 540px"
+            >
+              <input
+                id="trackOrderInput"
+                placeholder="Ex: MT-2026-1042"
+                required
+              />
+              <button class="btn" type="submit">Rastrear</button>
+            </form>
+            <div class="order-chips" id="recentOrderChips"></div>
+            <div id="trackOrderResult"></div>
+          </div>
+
+          <div class="split">
+            <!-- Left Column: FAQ + Size Table + Channels -->
+            <div>
+              <div class="support-card">
+                <h3>Perguntas Frequentes</h3>
+                <input
+                  class="field"
+                  id="faqSearch"
+                  type="search"
+                  placeholder="Filtrar dúvidas (ex: frete, linho, troca, pix)..."
+                  style="width: 100%; margin-bottom: 10px"
+                />
+                <div id="faqList"></div>
+              </div>
+
+              <div class="support-card">
+                <h3>Tabela Oficial de Medidas (cm)</h3>
+                <p style="font-size: 12px; color: var(--muted); margin-top: 0">
+                  Modelagem fluida. Em caso de dúvida entre dois tamanhos,
+                  prefira o maior para um caimento mais leve.
+                </p>
+                <table class="measure-table">
+                  <thead>
+                    <tr>
+                      <th>Tam.</th>
+                      <th>Numeração</th>
+                      <th>Busto</th>
+                      <th>Cintura</th>
+                      <th>Quadril</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><strong>PP</strong></td>
+                      <td>34</td>
+                      <td>80 – 84</td>
+                      <td>62 – 66</td>
+                      <td>88 – 92</td>
+                    </tr>
+                    <tr>
+                      <td><strong>P</strong></td>
+                      <td>36 – 38</td>
+                      <td>85 – 90</td>
+                      <td>67 – 72</td>
+                      <td>93 – 98</td>
+                    </tr>
+                    <tr>
+                      <td><strong>M</strong></td>
+                      <td>40</td>
+                      <td>91 – 96</td>
+                      <td>73 – 78</td>
+                      <td>99 – 104</td>
+                    </tr>
+                    <tr>
+                      <td><strong>G</strong></td>
+                      <td>42 – 44</td>
+                      <td>97 – 104</td>
+                      <td>79 – 86</td>
+                      <td>105 – 112</td>
+                    </tr>
+                    <tr>
+                      <td><strong>GG</strong></td>
+                      <td>46</td>
+                      <td>105 – 112</td>
+                      <td>87 – 94</td>
+                      <td>113 – 120</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <div class="support-card">
+                <h3>Canais &amp; Políticas</h3>
+                <p
+                  style="font-size: 13px; color: var(--muted); margin: 0 0 14px"
+                >
+                  Atendimento de segunda a sábado, das 09h às 19h (horário de
+                  Brasília).
+                </p>
+                <div
+                  style="
+                    display: flex;
+                    gap: 10px;
+                    flex-wrap: wrap;
+                    margin-bottom: 16px;
+                  "
+                >
+                  <a
+                    id="whatsappLink"
+                    class="btn sm"
+                    href="https://wa.me/5511999990000?text=Ol%C3%A1%20MAR%C3%89%20TWIN%2C%20preciso%20de%20ajuda%20com%20meu%20atendimento."
+                    target="_blank"
+                    rel="noopener"
+                    >WhatsApp Concierge ↗</a
+                  >
+                  <a class="btn soft sm" href="mailto:contato@maretwin.com.br"
+                    >contato@maretwin.com.br</a
+                  >
+                </div>
+                <p style="font-size: 12px; color: var(--muted); margin: 0">
+                  <a
+                    href="#"
+                    data-policy="privacy"
+                    style="text-decoration: underline"
+                    >Política de Privacidade</a
+                  >
+                  ·
+                  <a
+                    href="#"
+                    data-policy="terms"
+                    style="text-decoration: underline"
+                    >Termos de Uso</a
+                  >
+                  ·
+                  <a
+                    href="#"
+                    data-policy="returns"
+                    style="text-decoration: underline"
+                    >Trocas e Devoluções</a
+                  >
+                </p>
+              </div>
+            </div>
+
+            <!-- Right Column: Support / Exchange Form & Open Tickets -->
+            <div>
+              <div class="panel-card">
+                <div class="eyebrow">Concierge Maré Twin</div>
+                <h3>Fale Conosco ou Solicite Troca</h3>
+                <p class="lead">
+                  Envie sua mensagem ou solicitação de troca. Um protocolo será
+                  gerado imediatamente e salvo no seu histórico abaixo.
+                </p>
+                <form id="supportForm">
+                  <div class="form-group">
+                    <label for="supportTopic">Assunto</label>
+                    <select id="supportTopic">
+                      <option value="Dúvida sobre Produto">
+                        Dúvida sobre Produto / Medidas
+                      </option>
+                      <option value="Solicitar Troca ou Devolução">
+                        Solicitar Troca ou Devolução
+                      </option>
+                      <option value="Status de Entrega">
+                        Status de Entrega / Pedido
+                      </option>
+                      <option value="Atacado e Parcerias">
+                        Atacado e Parcerias
+                      </option>
+                    </select>
+                  </div>
+                  <div class="form-grid">
+                    <div class="form-group">
+                      <label for="supportName">Seu Nome</label>
+                      <input
+                        id="supportName"
+                        required
+                        placeholder="Nome completo"
+                      />
+                    </div>
+                    <div class="form-group">
+                      <label for="supportEmail">E-mail</label>
+                      <input
+                        id="supportEmail"
+                        type="email"
+                        required
+                        placeholder="voce@email.com"
+                      />
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="supportOrder"
+                      >Número do Pedido (opcional)</label
+                    >
+                    <input id="supportOrder" placeholder="Ex: MT-2026-1042" />
+                  </div>
+                  <div class="form-group">
+                    <label for="supportMessage">Mensagem</label>
+                    <textarea
+                      id="supportMessage"
+                      required
+                      placeholder="Conte como podemos ajudar você hoje..."
+                    ></textarea>
+                  </div>
+                  <button class="btn" type="submit" style="width: 100%">
+                    Enviar Atendimento
+                  </button>
+                  <div class="notice" id="supportNotice"></div>
+                </form>
+
+                <div id="ticketsContainer" style="margin-top: 22px"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-inner">
+        <div>
+          <a href="#home" data-nav="home" aria-label="MARÉ TWIN">
+            <img
+              class="footer-brand-img"
+              src="assets/mare_twin_logo.jpg"
+              alt="MARÉ TWIN"
+            />
+          </a>
+          <p>
+            Moda autoral em linho natural e acessórios inspirados na serenidade
+            da maré e na luz dourada do litoral.
+          </p>
+        </div>
+        <div>
+          <h3>Navegação</h3>
+          <a href="#home" data-nav="home">Home</a>
+          <a href="#collections" data-nav="collections">Coleções</a>
+          <a href="#sessions" data-nav="sessions">Sessões</a>
+          <a href="#cart" data-nav="cart">Carrinho</a>
+          <a href="#support" data-nav="support">Suporte</a>
+        </div>
+        <div>
+          <h3>Atendimento</h3>
+          <a href="#support" data-nav="support">Rastrear Pedido</a>
+          <a href="#" data-policy="returns">Trocas e Devoluções</a>
+          <a href="#" data-policy="privacy">Política de Privacidade</a>
+          <a href="#" data-policy="terms">Termos de Uso</a>
+        </div>
+        <div>
+          <h3>Cupons Ativos</h3>
+          <p><strong>MARETWIN10</strong> — 10% OFF</p>
+          <p><strong>PRIMEIRACOMPRA</strong> — 15% OFF</p>
+          <p><strong>FRETEGRATIS</strong> — Frete Grátis</p>
+          <p style="margin-top: 10px; font-size: 12px; color: var(--muted)">
+            Instagram: @maretwin.oficial
+          </p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span
+          >© <span id="year"></span> MARÉ TWIN. Todos os direitos
+          reservados.</span
+        >
+        <span>Estética solar · Linho natural · Feito no Brasil.</span>
+      </div>
+    </footer>
+
+    <!-- Toast -->
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+    <!-- Product Detail Modal -->
+    <div
+      class="modal-backdrop"
+      id="productModal"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Detalhes do produto"
+    >
+      <div class="modal">
+        <button
+          class="modal-close"
+          data-close-modal="productModal"
+          aria-label="Fechar"
+        >
+          ✕
+        </button>
+        <div id="productModalContent"></div>
+      </div>
+    </div>
+
+    <!-- Favorites Modal -->
+    <div
+      class="modal-backdrop"
+      id="favsModal"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Meus Favoritos"
+    >
+      <div class="modal" style="width: min(680px, 100%)">
+        <button
+          class="modal-close"
+          data-close-modal="favsModal"
+          aria-label="Fechar"
+        >
+          ✕
+        </button>
+        <div class="eyebrow">Sua Lista de Desejos</div>
+        <h2
+          style="
+            font-family: var(--font-serif);
+            font-size: 32px;
+            margin: 6px 0 18px;
+          "
+        >
+          Meus Favoritos
+        </h2>
+        <div id="favsModalContent"></div>
+      </div>
+    </div>
+
+    <!-- Checkout Modal -->
+    <div
+      class="modal-backdrop"
+      id="checkoutModal"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Finalizar Compra"
+    >
+      <div class="modal" style="width: min(700px, 100%)">
+        <button
+          class="modal-close"
+          data-close-modal="checkoutModal"
+          aria-label="Fechar"
+        >
+          ✕
+        </button>
+        <div id="checkoutModalContent"></div>
+      </div>
+    </div>
+
+    <!-- Policy Modal -->
+    <div
+      class="modal-backdrop"
+      id="policyModal"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Políticas da Loja"
+    >
+      <div class="modal" style="width: min(660px, 100%)">
+        <button
+          class="modal-close"
+          data-close-modal="policyModal"
+          aria-label="Fechar"
+        >
+          ✕
+        </button>
+        <div id="policyModalContent"></div>
+      </div>
+    </div>
+
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
