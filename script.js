@@ -806,6 +806,79 @@
   // ---------- CHECKOUT MODAL ----------
   let checkoutPaymentMethod = "pix";
 
+  function animateCheckoutCard() {
+    const scene = $("#checkoutCardScene");
+    const card = $("#checkoutCard");
+    if (!scene || !card) return;
+
+    const gsap = window.gsap;
+    const isFlipped = card.classList.contains("is-flipped");
+
+    if (gsap) {
+      card.classList.add("checkout-card-gsap");
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        gsap.set(card, {
+          opacity: 1,
+          rotationY: isFlipped ? 180 : 0,
+          scale: 1,
+          y: 0,
+        });
+        return;
+      }
+
+      gsap.fromTo(
+        card,
+        { opacity: 0, rotationY: isFlipped ? 164 : -16, scale: 0.93, y: 28 },
+        {
+          opacity: 1,
+          rotationY: isFlipped ? 180 : 0,
+          scale: 1,
+          y: 0,
+          duration: 0.9,
+          ease: "back.out(1.5)",
+        },
+      );
+      gsap.fromTo(
+        scene.querySelectorAll(".checkout-card-front > *"),
+        { opacity: 0, y: 10 },
+        { opacity: 1, y: 0, duration: 0.45, stagger: 0.08, delay: 0.24 },
+      );
+    }
+
+    scene.addEventListener("pointermove", (event) => {
+      if (
+        !gsap ||
+        event.pointerType === "touch" ||
+        window.matchMedia("(prefers-reduced-motion: reduce)").matches
+      ) {
+        return;
+      }
+      const bounds = scene.getBoundingClientRect();
+      const x = (event.clientX - bounds.left) / bounds.width;
+      const y = (event.clientY - bounds.top) / bounds.height;
+      gsap.to(scene, {
+        rotationX: (0.5 - y) * 12,
+        rotationY: (x - 0.5) * 16,
+        duration: 0.35,
+        ease: "power2.out",
+        overwrite: "auto",
+      });
+    });
+
+    scene.addEventListener("pointerleave", () => {
+      if (!gsap || window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        return;
+      }
+      gsap.to(scene, {
+        rotationX: 0,
+        rotationY: 0,
+        duration: 0.65,
+        ease: "elastic.out(1, 0.5)",
+        overwrite: "auto",
+      });
+    });
+  }
+
   function openCheckoutModal() {
     if (state.cart.length === 0) return;
     checkoutPaymentMethod = "pix";
@@ -867,11 +940,57 @@
           `
               : checkoutPaymentMethod === "card"
                 ? `
-            <div class="form-grid">
-              <div class="form-group">
-                <label for="coCard">Número do Cartão (simulação)</label>
-                <input id="coCard" placeholder="0000 0000 0000 0000" maxlength="19" required>
+            <section class="checkout-card-section" aria-label="Dados do cartão">
+              <div class="checkout-card-scene" id="checkoutCardScene">
+                <div class="checkout-card" id="checkoutCard">
+                  <div class="checkout-card-face checkout-card-front">
+                    <div class="checkout-card-top">
+                      <span class="checkout-card-chip" aria-hidden="true"></span>
+                      <span class="checkout-card-brand">MARÉ TWIN</span>
+                    </div>
+                    <div class="checkout-card-number" id="previewCardNumber">•••• •••• •••• ••••</div>
+                    <div class="checkout-card-bottom">
+                      <div>
+                        <span class="checkout-card-label">TITULAR</span>
+                        <span class="checkout-card-value" id="previewCardName">SEU NOME</span>
+                      </div>
+                      <div>
+                        <span class="checkout-card-label">VALIDADE</span>
+                        <span class="checkout-card-value" id="previewCardExpiry">MM/AA</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="checkout-card-face checkout-card-back">
+                    <div class="checkout-card-stripe"></div>
+                    <div class="checkout-card-cvv">
+                      <span>CVV</span>
+                      <span class="checkout-card-cvv-value" id="previewCardCvv">•••</span>
+                    </div>
+                    <span class="checkout-card-brand checkout-card-brand-back">MARÉ TWIN</span>
+                  </div>
+                </div>
               </div>
+              <p class="checkout-card-notice">Demonstração de checkout: não informe dados reais. As informações do cartão não são salvas.</p>
+              <div class="form-group">
+                <label for="coCardName">Nome impresso no cartão</label>
+                <input id="coCardName" autocomplete="off" maxlength="26" placeholder="Como aparece no cartão" required>
+              </div>
+              <div class="form-group">
+                <label for="coCard">Número do Cartão</label>
+                <input id="coCard" inputmode="numeric" autocomplete="off" placeholder="0000 0000 0000 0000" maxlength="23" required>
+              </div>
+              <div class="form-grid">
+                <div class="form-group">
+                  <label for="coCardExpiry">Validade</label>
+                  <input id="coCardExpiry" inputmode="numeric" autocomplete="off" placeholder="MM/AA" maxlength="5" pattern="(0[1-9]|1[0-2])/[0-9]{2}" title="Digite a validade no formato MM/AA" required>
+                </div>
+                <div class="form-group">
+                  <label for="coCardCvv">CVV</label>
+                  <input id="coCardCvv" inputmode="numeric" autocomplete="off" placeholder="123" maxlength="4" pattern="[0-9]{3,4}" title="Digite o código de segurança com 3 ou 4 números" required>
+                </div>
+              </div>
+            </section>
+            <div class="form-grid">
               <div class="form-group">
                 <label for="coInstallments">Parcelamento</label>
                 <select id="coInstallments">
@@ -897,10 +1016,36 @@
         <button class="btn" type="submit" style="width:100%">Confirmar Pedido · ${brl(finalTotal)}</button>
       </form>
     `;
+    animateCheckoutCard();
   }
 
   function handleCheckoutSubmit(e) {
     e.preventDefault();
+    if (checkoutPaymentMethod === "card") {
+      const cardInput = $("#coCard");
+      const expiryInput = $("#coCardExpiry");
+      const cardDigits = cardInput.value.replace(/\D/g, "");
+      const [expiryMonth, expiryYear] = expiryInput.value.split("/");
+      const expiryDate = new Date(
+        2000 + Number(expiryYear),
+        Number(expiryMonth),
+        0,
+        23,
+        59,
+        59,
+      );
+
+      cardInput.setCustomValidity(
+        cardDigits.length < 13 || cardDigits.length > 19
+          ? "Digite um número de cartão com 13 a 19 números."
+          : "",
+      );
+      expiryInput.setCustomValidity(
+        expiryDate < new Date() ? "O cartão está vencido." : "",
+      );
+      if (!e.currentTarget.reportValidity()) return;
+    }
+
     const { total } = computeCartTotals();
     const finalTotal = checkoutPaymentMethod === "pix" ? total * 0.95 : total;
     const code = `MT-2026-${Math.floor(1000 + Math.random() * 9000)}`;
@@ -1385,6 +1530,95 @@
         state.cart[idx].size = e.target.value;
         saveLS("maretwin_cart", state.cart);
         showToast(`Tamanho atualizado para ${e.target.value}.`);
+      }
+    }
+  });
+
+  document.addEventListener("input", (e) => {
+    const input = e.target;
+    if (
+      !input.matches("#coCardName, #coCard, #coCardExpiry, #coCardCvv")
+    ) {
+      return;
+    }
+
+    if (input.id === "coCard") {
+      input.setCustomValidity("");
+      const cursor = input.selectionStart ?? input.value.length;
+      const digitsBeforeCursor = input.value
+        .slice(0, cursor)
+        .replace(/\D/g, "").length;
+      const digits = input.value.replace(/\D/g, "").slice(0, 19);
+      input.value = digits.replace(/(.{4})/g, "$1 ").trim();
+      const cursorPosition = input.value
+        .split("")
+        .findIndex((_, index, value) => {
+          const digitsAtPosition = value
+            .slice(0, index + 1)
+            .join("")
+            .replace(/\D/g, "").length;
+          return digitsAtPosition === digitsBeforeCursor;
+        });
+      input.setSelectionRange(
+        cursorPosition < 0 ? input.value.length : cursorPosition + 1,
+        cursorPosition < 0 ? input.value.length : cursorPosition + 1,
+      );
+    } else if (input.id === "coCardExpiry") {
+      input.setCustomValidity("");
+      const digits = input.value.replace(/\D/g, "").slice(0, 4);
+      input.value =
+        digits.length > 2
+          ? `${digits.slice(0, 2)}/${digits.slice(2)}`
+          : digits;
+    } else if (input.id === "coCardCvv") {
+      input.value = input.value.replace(/\D/g, "").slice(0, 4);
+    }
+
+    const previewFields = {
+      coCardName: $("#previewCardName"),
+      coCard: $("#previewCardNumber"),
+      coCardExpiry: $("#previewCardExpiry"),
+      coCardCvv: $("#previewCardCvv"),
+    };
+    const previewDefaults = {
+      coCardName: "SEU NOME",
+      coCard: "•••• •••• •••• ••••",
+      coCardExpiry: "MM/AA",
+      coCardCvv: "•••",
+    };
+    const previewValue =
+      input.id === "coCardName" ? input.value.trim() : input.value;
+    const previewField = previewFields[input.id];
+    previewField.textContent = previewValue || previewDefaults[input.id];
+
+    if (window.gsap && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      window.gsap.fromTo(
+        previewField,
+        { opacity: 0.55, y: 4 },
+        { opacity: 1, y: 0, duration: 0.25, ease: "power2.out", overwrite: "auto" },
+      );
+    }
+  });
+
+  document.addEventListener("focusin", (e) => {
+    if (e.target.closest("#checkoutForm")) {
+      const card = $("#checkoutCard");
+      if (!card) return;
+
+      const isFlipped = e.target.id === "coCardCvv";
+      card.classList.toggle("is-flipped", isFlipped);
+      if (window.gsap) {
+        const rotationY = isFlipped ? 180 : 0;
+        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+          window.gsap.set(card, { rotationY });
+        } else {
+          window.gsap.to(card, {
+            rotationY,
+            duration: 0.72,
+            ease: "power3.inOut",
+            overwrite: "auto",
+          });
+        }
       }
     }
   });
